@@ -72,46 +72,45 @@ if os.path.exists("Xerox logo.jpg"):
     except Exception as e:
         print(f"⚠️ No se pudo mostrar 'Xerox logo.jpg': {e}")
 
+# Texto
+c.setFont("Helvetica-Bold", 10)
+c.setFillColor(colors.black)
+c.drawString(100, HEIGHT - 30, f"Cliente: {cliente}")
+c.setFont("Helvetica", 9)
+c.drawString(100, HEIGHT - 45, f"Modelo: {modelo}")
+c.drawString(100, HEIGHT - 60, f"Serie: {serie}")
 
-        # Texto
-        c.setFont("Helvetica-Bold", 10)
-        c.setFillColor(colors.black)
-        c.drawString(100, HEIGHT - 30, f"Cliente: {cliente}")
-        c.setFont("Helvetica", 9)
-        c.drawString(100, HEIGHT - 45, f"Modelo: {modelo}")
-        c.drawString(100, HEIGHT - 60, f"Serie: {serie}")
+# QRs
+qr_size = 80
+margin = 20
+gap = (WIDTH - 2 * margin - 3 * qr_size) / 2
+x1 = margin
+x2 = x1 + qr_size + gap
+x3 = x2 + qr_size + gap
+y_qr = HEIGHT - 150
 
-        # QRs
-        qr_size = 80
-        margin = 20
-        gap = (WIDTH - 2 * margin - 3 * qr_size) / 2
-        x1 = margin
-        x2 = x1 + qr_size + gap
-        x3 = x2 + qr_size + gap
-        y_qr = HEIGHT - 150
+c.drawImage(qr_img_whatsapp, x1, y_qr, width=qr_size, height=qr_size)
+c.drawImage(qr_img_email, x2, y_qr, width=qr_size, height=qr_size)
+c.drawImage(qr_img_app, x3, y_qr, width=qr_size, height=qr_size)
 
-        c.drawImage(qr_img_whatsapp, x1, y_qr, width=qr_size, height=qr_size)
-        c.drawImage(qr_img_email, x2, y_qr, width=qr_size, height=qr_size)
-        c.drawImage(qr_img_app, x3, y_qr, width=qr_size, height=qr_size)
+c.setFont("Helvetica", 8)
+c.drawCentredString(x1 + qr_size / 2, y_qr - 12, "WhatsApp")
+c.drawCentredString(x2 + qr_size / 2, y_qr - 12, "Email")
+c.drawCentredString(x3 + qr_size / 2, y_qr - 12, "App")
 
-        c.setFont("Helvetica", 8)
-        c.drawCentredString(x1 + qr_size / 2, y_qr - 12, "WhatsApp")
-        c.drawCentredString(x2 + qr_size / 2, y_qr - 12, "Email")
-        c.drawCentredString(x3 + qr_size / 2, y_qr - 12, "App")
+# Contacto
+c.setFont("Helvetica", 7)
+c.drawString(100, 35, "Puede Contactarnos:")
+c.drawString(100, 25, "505 22552090")
+c.drawString(100, 15, "callcenter.ni@pbs.group")
 
-        # Contacto
-        c.setFont("Helvetica", 7)
-        c.drawString(100, 35, "Puede Contactarnos:")
-        c.drawString(100, 25, "505 22552090")
-        c.drawString(100, 15, "callcenter.ni@pbs.group")
+c.showPage()
 
-        c.showPage()
+c.save()
+output.seek(0)
 
-    c.save()
-    output.seek(0)
-
-    st.success("✅ PDF generado correctamente")
-    st.download_button("📥 Descargar etiquetas PDF", output, file_name="etiquetas_qr.pdf")
+st.success("✅ PDF generado correctamente")
+st.download_button("📥 Descargar etiquetas PDF", output, file_name="etiquetas_qr.pdf")
 
 elif uploaded_file:
-    st.warning("❗ Sube también los logos para continuar.")
+st.warning("❗ Sube también los logos para continuar.")
