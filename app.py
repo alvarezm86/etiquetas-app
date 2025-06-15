@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 import qrcode
 from io import BytesIO
 from reportlab.pdfgen import canvas
@@ -57,9 +58,7 @@ if uploaded_file and pbs_logo and xerox_logo:
         c.setLineWidth(3)
         c.rect(10, 10, WIDTH - 20, HEIGHT - 20)
 
-        # Logos
-       import os
-
+       
 # Logos opcionales
 if os.path.exists("pbs logo.jpg"):
     try:
