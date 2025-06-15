@@ -58,11 +58,21 @@ if uploaded_file and pbs_logo and xerox_logo:
         c.rect(10, 10, WIDTH - 20, HEIGHT - 20)
 
         # Logos
-        try:
-            c.drawImage(ImageReader(pbs_logo), 0.3 * inch, HEIGHT - 1.1 * inch, width=0.9 * inch, height=0.9 * inch, mask='auto')
-            c.drawImage(ImageReader(xerox_logo), WIDTH - 1.2 * inch, HEIGHT - 1.1 * inch, width=0.9 * inch, height=0.9 * inch, mask='auto')
-        except Exception as e:
-            st.warning(f"⚠️ Error cargando logos: {e}")
+       import os
+
+# Logos opcionales
+if os.path.exists("pbs logo.jpg"):
+    try:
+        c.drawImage("pbs logo.jpg", 0.3 * inch, HEIGHT - 1.1 * inch, width=0.9 * inch, height=0.9 * inch, mask='auto')
+    except Exception as e:
+        print(f"⚠️ No se pudo mostrar 'pbs logo.jpg': {e}")
+
+if os.path.exists("Xerox logo.jpg"):
+    try:
+        c.drawImage("Xerox logo.jpg", WIDTH - 1.2 * inch, HEIGHT - 1.1 * inch, width=0.9 * inch, height=0.9 * inch, mask='auto')
+    except Exception as e:
+        print(f"⚠️ No se pudo mostrar 'Xerox logo.jpg': {e}")
+
 
         # Texto
         c.setFont("Helvetica-Bold", 10)
