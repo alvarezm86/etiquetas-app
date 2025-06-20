@@ -47,11 +47,11 @@ if uploaded_file:
         cliente = str(row["Nombre del Cliente"])
 
         mensaje = f"Hola, soy de Nicaragua, me gustaria reportar mi equipo con serie {serie}, Modelo {modelo}, por la siguiente razón:"
-        whatsapp_url = f"https://wa.me/50584147953?text={quote(mensaje)}"
+        whatsapp_url = f"https://wa.me/50254566479?text={quote(mensaje)}"
 
         asunto = f"Equipo serie {serie}"
         cuerpo = mensaje
-        email_url = f"mailto:callcenter.ni@pbs.group?subject={quote(asunto)}&body={quote(cuerpo)}"
+        email_url = f"mailto:servicio@grouppbs.com?subject={quote(asunto)}&body={quote(cuerpo)}"
 
         def generar_qr(data):
             qr = qrcode.make(data)
@@ -111,7 +111,7 @@ if uploaded_file:
         c.setFont("Helvetica", 7)
         c.drawString(100, 35, "Puede Contactarnos:")
         c.drawString(100, 25, "505 22552090")
-        c.drawString(100, 15, "callcenter.ni@pbs.group")
+        c.drawString(100, 15, "servicio@grouppbs.com")
 
         c.showPage()
 
